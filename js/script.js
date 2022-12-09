@@ -11,36 +11,42 @@ button.classList.add("mb-5")
 mainElement.append(button);
 
 
-
 let count = 0;
 button.innerHTML = "#" + count;
 
 button.addEventListener("click", function () {
-    if (count < 10) {
+    if (count < 9) {
         count++;
-        
-    } else {
+        newPAlert.innerHTML = "";
+
+    } else if (count === 9) {
+        count++;
         button.classList.add("bg-danger");
         setTimeout(limit, 5 * 1000);
+        newPAlert.innerHTML = "attendi 5 secondi, quando il bottone non è più rosso puoi continuare";
+        
     }
-    console.log(count)
     button.innerHTML = "#" + count;
 })
+const newPAlert = document.createElement("p");
+mainElement.append(newPAlert);
+
+
+function limit() {
+    count = 0;
+    button.innerHTML = "#" + count;
+    button.classList.remove("bg-danger")
+}
 
 const newEs = document.createElement("h1");
 newEs.classList.add("fw-bold", "text-danger");
 newEs.innerHTML = "Esercizio 2 - Cronometro";
 mainElement.append(newEs);
 
-function limit() {
-    console.log("azzera");
-    count = 0;
-    button.innerHTML = "#" + count;
-    button.classList.remove("bg-danger")
-}
 
 
-                                                        //ESERCIZIO 2
+
+//ESERCIZIO 2
 let number = 0;
 let clock;
 
@@ -52,11 +58,11 @@ mainElement.append(outputTime);
 
 //BOTTONE START
 const buttonStart = document.createElement("a");
-buttonStart.classList.add("btn" , "bg-primary" , "m-5");
+buttonStart.classList.add("btn", "bg-primary", "m-5");
 buttonStart.innerHTML = "Start";
 mainElement.append(buttonStart);
 
-buttonStart.addEventListener("click" , function() {
+buttonStart.addEventListener("click", function () {
     clock = setInterval(myFunction, 1);
     outputTime.innerHTML = number;
     buttonStart.classList.add("d-none");
@@ -66,25 +72,25 @@ buttonStart.addEventListener("click" , function() {
 
 // BOTTONE STOP
 const buttonStop = document.createElement("a");
-buttonStop.classList.add("btn" , "bg-danger" , "m-5");
+buttonStop.classList.add("btn", "bg-danger", "m-5");
 buttonStop.innerHTML = "Stoppa il tempo";
 mainElement.append(buttonStop);
 
-buttonStop.addEventListener("click", function() {
+buttonStop.addEventListener("click", function () {
     console.log("stop al tempo")
     clearInterval(clock)
     outputTime.innerHTML = number;
     buttonStart.classList.toggle("d-none");
-    
+
 })
 
 // BOTTONE RESET
 const buttonReset = document.createElement("a");
-buttonReset.classList.add("btn" , "btn-success" , "m-5");
+buttonReset.classList.add("btn", "btn-success", "m-5");
 buttonReset.innerHTML = "Reset";
 mainElement.append(buttonReset);
 
-buttonReset.addEventListener("click" , function() {
+buttonReset.addEventListener("click", function () {
     number = 0;
     outputTime.innerHTML = number;
 })
@@ -93,7 +99,7 @@ buttonReset.addEventListener("click" , function() {
 
 
 
-function myFunction(){
+function myFunction() {
     number++;
     outputTime.innerHTML = number;
 }
