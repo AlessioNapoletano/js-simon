@@ -107,7 +107,9 @@ mainElement.append(buttonReset);
 
 buttonReset.addEventListener("click", function () {
     number = 0;
+    clearInterval(clock);
     outputTime.innerHTML = number;
+    buttonStart.classList.remove("d-none")
 })
 
 
