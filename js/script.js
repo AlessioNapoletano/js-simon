@@ -13,6 +13,8 @@ mainElement.append(button);
 
 let count = 0;
 button.innerHTML = "#" + count;
+let timeOut;
+let counter = 0;
 
 button.addEventListener("click", function () {
     if (count < 9) {
@@ -23,11 +25,14 @@ button.addEventListener("click", function () {
         count++;
         button.classList.add("bg-danger");
         setTimeout(limit, 5 * 1000);
-        newPAlert.innerHTML = "attendi 5 secondi, quando il bottone non è più rosso puoi continuare";
+        timeOut = setInterval(stop,1000);
+        counter = 5;
+        
         
     }
     button.innerHTML = "#" + count;
-})
+});
+
 const newPAlert = document.createElement("p");
 mainElement.append(newPAlert);
 
@@ -36,6 +41,16 @@ function limit() {
     count = 0;
     button.innerHTML = "#" + count;
     button.classList.remove("bg-danger")
+}
+
+function stop(){
+    counter--;
+    console.log(counter);
+    newPAlert.innerHTML = "attendi " + counter + " secondi, Il bottone è disattivato";
+    if (counter === 0) {
+        clearInterval(timeOut);
+        newPAlert.innerHTML = "button avaible";
+    }
 }
 
 const newEs = document.createElement("h1");
