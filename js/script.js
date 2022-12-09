@@ -80,7 +80,7 @@ buttonStop.addEventListener("click", function () {
     console.log("stop al tempo")
     clearInterval(clock)
     outputTime.innerHTML = number;
-    buttonStart.classList.toggle("d-none");
+    buttonStart.classList.remove("d-none");
 
 })
 
@@ -94,9 +94,6 @@ buttonReset.addEventListener("click", function () {
     number = 0;
     outputTime.innerHTML = number;
 })
-
-
-
 
 
 function myFunction() {
